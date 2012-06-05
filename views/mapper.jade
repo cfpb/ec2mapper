@@ -1,0 +1,47 @@
+extends layout
+
+block prepend menuoptions
+  li.dropdown
+    a.dropdown-toggle(href="#",data-toggle="dropdown")
+      span#date-dropdown Last Snapshot
+        span &nbsp;
+        i.caret
+    #choose-date.dropdown-menu(style="width:365px;padding:5px;")
+
+block content
+  .contents-fluid
+    .row-fluid
+      .span3
+        .well.sidebar-nav
+          ul#vpc_list.nav.nav-list
+            li.nav-header VPCs
+        .well.sidebar-nav
+          ul#secgroup_list.nav.nav-list
+            li.nav-header Sec. Groups
+      .span9
+        #loader
+          img(src="#{settings.baseurl}/img/loading.gif")
+        #client-area(style="display:none;")        
+          h2(style="color:#aaa;") VPC:&nbsp;
+            span#vpc-title(style="color:black;")
+          .row
+            .span4
+              h3 &nbsp;Private
+              table#private_instances.table.table-condensed.table-bordered.private-inst
+                thead
+                  tr
+                    th Hostname/Alias
+                    th IP
+                tbody
+            .span5
+              h3 &nbsp;Public
+              table#public_instances.table.table-condensed.table-bordered.public-inst
+                thead
+                  tr
+                    th Hostname/Alias
+                    th IP
+                tbody
+                
+block append footer                                
+  script(src='#{settings.baseurl}/js/models.js')
+  script(src='#{settings.baseurl}/js/mapper.js')

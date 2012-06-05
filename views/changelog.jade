@@ -1,0 +1,23 @@
+extends layout
+
+block append stylesheets
+  link(rel="stylesheet", href="stylesheets/kalendae.css")
+
+block prepend menuoptions
+  li
+    a.dropdown
+      span Last 20 days
+  // calendar disabled
+    li.dropdown
+      a.dropdown-toggle(href="#",data-toggle="dropdown")
+        span#date-dropdown Last 20 days
+          span &nbsp;
+          i.caret
+      #choose-date.dropdown-menu(style="width:365px;padding:5px;")                                  
+
+block content
+  #changelog
+  
+block append footer
+  script(src='#{settings.baseurl}/js/changelog.js')
+  script(src='#{settings.baseurl}/js/lib/JSONFormatter.js')

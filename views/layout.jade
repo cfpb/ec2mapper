@@ -1,0 +1,65 @@
+!!!
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title= settings.title
+    block stylesheets
+      link(rel="stylesheet", type="text/css", href="#{settings.baseurl}/stylesheets/bootstrap.css")
+      style(type="text/css")
+        body {padding-top:50px;}
+      link(rel="stylesheet", type="text/css", href="#{settings.baseurl}/stylesheets/bootstrap-responsive.css")
+      link(rel='stylesheet', type="text/css", href='#{settings.baseurl}/stylesheets/kalendae.css')
+      link(rel='stylesheet', type="text/css", href='#{settings.baseurl}/stylesheets/main.css')
+    block scripts
+      script(src='#{settings.baseurl}/js/lib/jquery.js')
+      script(src='#{settings.baseurl}/js/lib/underscore.js')
+      script(src='#{settings.baseurl}/js/lib/async.js')    
+      script(src='#{settings.baseurl}/js/lib/backbone.js')
+      script(src='#{settings.baseurl}/js/lib/kalendae.js')  
+      //- script(src='#{settings.baseurl}/js/lib/bootstrap.js')  
+      script(src='#{settings.baseurl}/js/lib/bootstrap-button.js')  
+      //- Customized version of bootstrap-tooltip allows tooltip title function to return jQuery object
+      script(src='#{settings.baseurl}/js/lib/bootstrap-tooltip.js')  
+      //- Customized bootstrap-dropdown won't close dropdowns when clicking somewhere
+      script(src='#{settings.baseurl}/js/lib/bootstrap-collapse.js')  
+      script(src='#{settings.baseurl}/js/lib/bootstrap-dropdown.js')  
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          a.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse")
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href="#{settings.baseurl}/") EC2&#x200A;&bull;&#x200A;mapper
+          .nav-collapse
+            ul.nav
+              li: a(href="#{settings.baseurl}/") Home
+              li: a(href="#{settings.baseurl}/changelog") Changelog
+            ul.nav.pull-right
+              block menuoptions
+                li.divider-vertical
+                if request.auth
+                  li.dropdown
+                    a.dropdown-toggle(href="#",data-toggle="dropdown")
+                      span#auth-user #{request.auth.user}
+                      //- a(href="/proxy/logout?referrer=#{settings.baseurl+request.url}")
+                        //- i.icon-eject.icon-white
+                    ul.dropdown-menu
+                      li 
+                        a(href="/profile?referrer=#{settings.baseurl+request.url}") Profile
+                          i.icon-user.pull-left
+                          span.pull-left &nbsp;&nbsp;
+                      li.divider
+                      li
+                        a(href="/logout?referrer=#{settings.baseurl+request.url}") Log out
+                          i.icon-eject.pull-left
+                          span.pull-left &nbsp;&nbsp;
+                else
+                  li
+                    a(href="/proxy/login?login-required&referrer=#{settings.baseurl+request.url}") Not logged in
+       
+    #content(style="padding:0px 5px;")
+      block content
+    block footer

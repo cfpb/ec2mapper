@@ -1,0 +1,31 @@
+{
+  "$ignore": ["datetime", "_id"],
+  "instances": {
+    "$ignore": [],
+    "/.*/": {
+      "$name": "name"
+    },
+    "blockDeviceMapping": {
+      "item": {
+        "$arrayify": true,
+        "$key": "deviceName"      
+      }
+    }
+  },
+  "secgroups": {
+    "/.*/": {
+      "$name": "name",
+      "ipPermissions": {
+        "item": {
+          "$arrayify": true,
+          "$key": ["ipProtocol", "fromPort", "toPort"]
+        }
+      }
+    }
+  },
+  "subnets": {
+    "/.*/": {
+      "$ignore": ["availableIpAddressCount"]
+    }
+  }
+}
