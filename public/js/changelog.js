@@ -115,6 +115,7 @@ function populateChangelog(dates) {
     }],
     
     finished: ['dates', function(cb) {
+      // do nothing
     }]    
   });
 }
