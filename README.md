@@ -37,3 +37,4 @@ To run the webserver:
 Note that it is highly recommended that you use some method of monitoring and restarting these processes should they fail as well as to start/stop the application.  A well-known tool typically used for node.js is called `forever` and may be installed using npm by running `npm install -g forever` (please see their [documentation](https://github.com/nodejitsu/forever/#usage) on usage).  You may also simply use a more traditional `init.d` script to control starting/stopping.
 
 Also note that EC2mapper does not provide any kind of authentication, if you require user auth you must implement it either in a proxy upstream or by modifying the source and including an authentication middleware.
+
