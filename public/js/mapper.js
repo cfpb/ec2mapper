@@ -115,7 +115,6 @@ $(function() {
         secgroups.each(function(group) {
           var sgrefs_in = _.map(_.pluck(group.get("inbound"), "groups"), function(item) {return _.keys(item)});
           var sgrefs_out = _.map(_.pluck(group.get("outbound"), "groups"), function(item) {return _.keys(item)});
-          //console.log(group.id, group.get("name"), _.uniq(_.compact(_.flatten([sgrefs_in, sgrefs_out]))));
           var sgchange = _.any(_.compact(_.flatten([sgrefs_in, sgrefs_out])), function(gid) {
             return secgroups.get(gid) && group.id != gid && secgroups.get(gid).get("$updated");
           });
@@ -216,10 +215,6 @@ function populateVpcs() {
 // Accepts a Secgroup object and returns a rendered jQuery object to insert in tooltip
 function renderSecGroupTooltipTable(group) {
 
-  if (annotated) {
-    console.log("annotated:", annotated.secgroups[group.id]);
-  }
-  
   var table = $("<table class='table-tooltip'/>");
   table.append($("<tr/>").append($("<th colspan='2'/>").append($("<span style='color:#fff f00;font:normal 10px arial;'/>").text(group.get("groupDescription"))).append($("<br><span style='color:#999999;padding:6px;'/>").text("("+group.id+")"))));    
   
@@ -361,7 +356,6 @@ function populateSecurityGroups(vpc_id) {
     }, placement: "right", trigger: "manual"});
     link.click(function(event) {
       var group_id = $(this).attr("group_id");
-      if (console.log) console.log(group_id, secgroups.get(group_id));
       event.preventDefault();
       clearTooltips();
       activeTooltip = $(this);
@@ -686,7 +680,6 @@ function populateInstances(vpc_id) {
       activeInstTooltip = $(this).find("td").first();
       activeInstTooltip.tooltip("show");
       
-      if (console.log) console.log(inst_id, inst); // keep
       return false; // So tooltip doesn't get cleared
     });
     
@@ -752,7 +745,6 @@ function diffAnnotate(tree, diff, prefix) {
         setKey(item, prefix+"updated", true);
       } else if (inArray(_.map(diff.m, function(val) {return val[1]}), val)) {
         modid++;
-        console.log("mod", val, diff.m);
         setKey(item, prefix+"added", true);
         setKey(item, prefix+"modid", modid);
         var oldval = _.find(diff.m, function(mod) {
