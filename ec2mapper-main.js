@@ -45,15 +45,21 @@ app.configure(function() {
   app.use(express.cookieParser());
   app.use(express.session({secret: settings.webserver.sessionKey}));
   app.use(function(req, res, next) {
+
+    req.auth = {user: "webuser"};
+    
+// Used to implement authentication handled by a proxy upstream, by default assume "webuser" is always logged in.
+/*
     if (req.headers["x-authenticated-user"]) {
       req.auth = {user: req.headers["x-authenticated-user"]};
-      // TODO: Lookup user details and cache them with a maxage
     }
+*/
     next();
   });
   
   // Force user to be logged-in for access
   app.use(function(req, res, next) {
+    // Redirect user to proxy login page if not logged in
     if (!req.auth) {
       res.writeHead(301, {'Location': '/login?login-required&referrer='+settings.baseurl+req.url}); // redirect
       res.end();
@@ -213,39 +219,19 @@ if (process.getuid() === 0) {
 
 console.log(settings.title+" listening on port %d in %s mode", settings.webserver.port, app.settings.env);
 
-
 //////////////////////////////////////////////////////////////////////////////////////
 
-// Get date snapshots for sec/dev/extranet and consumerfinance, merge them together
+// Retrieve most recent snapshot before given date from Mongo
 function get_snapshot(datetime, cb) {
   var snapshots = new mongo.Collection(ec2db, 'snapshots');
   snapshots.find({'type':'amazon', 'datetime': {"$lte": datetime}}, {}).sort({datetime:-1}).limit(1).toArray(function(err, items) {
     if (items.length > 0) {
       var item = items[0];
       
-      // Merge in consumerfinanance results
-      snapshots.find({'type':'amazon-consfin', 'datetime': {"$lte": datetime}}, {}).sort({datetime:-1}).limit(1).toArray(function(err, items) {
+      delete item["_id"];
       
-        var res_item = {};
-      
-        if (items.length > 0) {
-          var cf_item = items[0];
-          
-          _.each(_.uniq(_.union(_.keys(item), _.keys(cf_item))), function(key) {
-            if (!_.has(item, key)) {
-              item[key] = {};
-            }
-            res_item[key] = _.extend(item[key], cf_item[key]);
-          });
-          
-          delete res_item["_id"];
-          
-          // output final results
-          cb(res_item);
-        } else {
-          cb(item);
-        }
-      });      
+      cb(item);
+            
     } else {
       cb(JSON.stringify({}));
     }
