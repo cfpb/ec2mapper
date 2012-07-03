@@ -6,17 +6,18 @@ EC2mapper is a web application that provides a user-friendly interface to view A
 
 Prerequisites:
 
-- node.js
-- MongoDB
+- [http://nodejs.org/](node.js)
+- [http://www.mongodb.org/](MongoDB)
 
 Run the following command to checkout the latest copy
 
-    git clone http://github.com/CFPBLabs/ec2mapper
+    git clone http://github.com/CFPB/ec2mapper
     
-Edit the server-settings.json file to adjust the settings for your environment.  At a minimum you must include the following:
+Create a ```server-settings.json``` file ```server-settings.json.example```  as
+the basis. Adjust the settings for your environment.  At a minimum you must include the following:
 
-- webserver.sessionKey - used for securely tracking user sessions, must be a long hexadecimal string
-- aws.accessKey and aws.secretKey - Keys used to connect to Amazon API
+- ```webserver.sessionKey``` - used for securely tracking user sessions, must be a long hexadecimal string
+- ```aws.accessKey and aws.secretKey``` - Keys used to connect to Amazon API
 
 ### Running EC2mapper
 
