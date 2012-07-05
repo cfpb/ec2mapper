@@ -1,7 +1,7 @@
 {
   "proj_id": "ec2mapper",
   "title": "EC2mapper",
-  "baseurl": "/ec2mapper",
+  "baseurl": "",
   
   "webserver": {
     "port": 8080,

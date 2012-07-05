@@ -10,7 +10,7 @@ var annotated;
 var secgroups;
 var instances;
 
-var baseurl = "/ec2mapper";
+var baseurl = "";
 
 var activeTooltip = null;
 var activeInstTooltip = null;
@@ -216,7 +216,7 @@ function populateVpcs() {
 function renderSecGroupTooltipTable(group) {
 
   var table = $("<table class='table-tooltip'/>");
-  table.append($("<tr/>").append($("<th colspan='2'/>").append($("<span style='color:#fff f00;font:normal 10px arial;'/>").text(group.get("groupDescription"))).append($("<br><span style='color:#999999;padding:6px;'/>").text("("+group.id+")"))));    
+  table.append($("<tr/>").append($("<th colspan='2'/>").append($("<span style='color:#fff f00;font:normal 10px arial;'/>").text(group.get("groupDescription"))).append($("<span style='color:#999999;padding:6px;'/>").text("("+group.id+")"))));    
   
   // Render each individual rule along with its diff annotations
   var renderRule = function(rule, tr_class) {
