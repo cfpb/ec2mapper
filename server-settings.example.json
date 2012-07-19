@@ -1,0 +1,21 @@
+{
+  "proj_id": "ec2mapper",
+  "title": "EC2mapper",
+  "baseurl": "",
+  
+  "webserver": {
+    "port": 8080,
+    "host": "127.0.0.1",
+    "sessionKey": ""
+  },
+  "mongodb": {
+    "host": "127.0.0.1",
+    "port": 27017,
+    "db": "ec2mapper"
+  },
+  "aws": {
+    "accessKey": "",
+    "secretKey": ""
+  },
+  "fetchcron": "00 00 * * * *"
+}

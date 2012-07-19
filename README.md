@@ -13,8 +13,7 @@ Run the following command to checkout the latest copy
 
     git clone http://github.com/CFPB/ec2mapper
     
-Create a ```server-settings.json``` file ```server-settings.json.example```  as
-the basis. Adjust the settings for your environment.  At a minimum yogu must include the following:
+Copy or rename the server-settings.example.json file to server-settings.json and update the settings for your environment.  At a minimum you must include values for the following:
 
 - ```webserver.sessionKey``` - used for securely tracking user sessions, must be a long hexadecimal string
 - ```aws.accessKey and aws.secretKey``` - Keys used to connect to Amazon API
@@ -38,3 +37,4 @@ To run the webserver:
 Note that it is highly recommended that you use some method of monitoring and restarting these processes should they fail as well as to start/stop the application.  A well-known tool typically used for node.js is called `forever` and may be installed using npm by running `npm install -g forever` (please see their [documentation](https://github.com/nodejitsu/forever/#usage) on usage).  You may also simply use a more traditional `init.d` script to control starting/stopping.
 
 Also note that EC2mapper does not provide any kind of authentication, if you require user auth you must implement it either in a proxy upstream or by modifying the source and including an authentication middleware.
+
