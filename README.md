@@ -6,15 +6,15 @@ EC2mapper is a web application that provides a user-friendly interface to view A
 
 Prerequisites:
 
-- [http://nodejs.org/](node.js)
-- [http://www.mongodb.org/](MongoDB)
+- [node.js](http://nodejs.org/)
+- [MongoDB](http://www.mongodb.org/)
 
 Run the following command to checkout the latest copy
 
     git clone http://github.com/CFPB/ec2mapper
     
 Create a ```server-settings.json``` file ```server-settings.json.example```  as
-the basis. Adjust the settings for your environment.  At a minimum you must include the following:
+the basis. Adjust the settings for your environment.  At a minimum yogu must include the following:
 
 - ```webserver.sessionKey``` - used for securely tracking user sessions, must be a long hexadecimal string
 - ```aws.accessKey and aws.secretKey``` - Keys used to connect to Amazon API
