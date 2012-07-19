@@ -44,9 +44,6 @@ $("#choose-date").kalendae({
     current = current.clone().subtract("days",1);
   }
   
-  //if (console) console.log("range", _.map(range, function(val) {return val.format("MMM D")}));
-  if (console) console.log("dates", _.map(dates, function(val) {return val.format("MMM D")}));
-  
   populateChangelog(dates);
 });
 
@@ -118,7 +115,7 @@ function populateChangelog(dates) {
     }],
     
     finished: ['dates', function(cb) {
-      if (console) console.log("finished.");  
+      // do nothing
     }]    
   });
 }

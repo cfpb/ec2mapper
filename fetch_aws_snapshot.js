@@ -19,7 +19,7 @@ var ec2 = aws.createEC2Client(settings.aws.accessKey, settings.aws.secretKey, {
 
 // Init MongoDB connection
 var ec2db;
-new mongo.Db(mongodb.db, mongo_server, {}).open(function (error, client) {
+new mongo.Db(settings.mongodb.db, mongo_server, {}).open(function (error, client) {
   if (error) throw error;
   ec2db = client;
 });
