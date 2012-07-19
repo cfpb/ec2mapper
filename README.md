@@ -13,7 +13,7 @@ Run the following command to checkout the latest copy
 
     git clone http://github.com/CFPBLabs/ec2mapper
     
-Edit the server-settings.json file to adjust the settings for your environment.  At a minimum you must include the following:
+Copy or rename the server-settings.example.json file to server-settings.json and update the settings for your environment.  At a minimum you must include values for the following:
 
 - webserver.sessionKey - used for securely tracking user sessions, must be a long hexadecimal string
 - aws.accessKey and aws.secretKey - Keys used to connect to Amazon API
