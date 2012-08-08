@@ -6,8 +6,8 @@ EC2mapper is a web application that provides a user-friendly interface to view A
 
 Prerequisites:
 
-- [http://nodejs.org/](node.js)
-- [http://www.mongodb.org/](MongoDB)
+- [node.js](http://nodejs.org/)
+- [MongoDB](http://www.mongodb.org/)
 
 Run the following command to checkout the latest copy
 
