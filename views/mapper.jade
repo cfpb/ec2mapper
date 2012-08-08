@@ -43,5 +43,7 @@ block content
                 tbody
                 
 block append footer                                
+  script
+    var baseurl = !{JSON.stringify(settings.baseurl)};
   script(src='#{settings.baseurl}/js/models.js')
   script(src='#{settings.baseurl}/js/mapper.js')

@@ -38,3 +38,16 @@ Note that it is highly recommended that you use some method of monitoring and re
 
 Also note that EC2mapper does not provide any kind of authentication, if you require user auth you must implement it either in a proxy upstream or by modifying the source and including an authentication middleware.
 
+### Screenshots
+
+Main page of EC2mapper showing VPCs and security groups (left side) and all instances belonging to currently selected VPC (main area).  Green, red, and yellow highlighting denote security groups and instances that have been added, removed or changed respectively within a user-specified date range.
+<br><img src="ec2mapper/raw/master/screenshots/ss1.png"><br>
+
+Dropdown calendar opened to show date range selection.
+<br><img src="ec2mapper/raw/master/screenshots/ss2.png"><br>
+
+Clicking on an instance will display a popup with details.
+<br><img src="ec2mapper/raw/master/screenshots/ss3.png"><br>
+
+Popup for a changed instance showing a security group in green to which it has been assigned.
+<br><img src="ec2mapper/raw/master/screenshots/ss4.png"><br>

@@ -10,8 +10,6 @@ var annotated;
 var secgroups;
 var instances;
 
-var baseurl = "";
-
 var activeTooltip = null;
 var activeInstTooltip = null;
 
