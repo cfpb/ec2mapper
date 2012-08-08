@@ -1,7 +1,7 @@
 extends layout
 
 block append stylesheets
-  link(rel="stylesheet", href="stylesheets/kalendae.css")
+  link(rel="stylesheet", href="#{settings.baseurl}/stylesheets/kalendae.css")
 
 block prepend menuoptions
   li
@@ -19,5 +19,7 @@ block content
   #changelog
   
 block append footer
+  script
+    var baseurl = !{JSON.stringify(settings.baseurl)};
   script(src='#{settings.baseurl}/js/changelog.js')
   script(src='#{settings.baseurl}/js/lib/JSONFormatter.js')
