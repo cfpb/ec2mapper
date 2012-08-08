@@ -56,13 +56,13 @@ function populateChangelog(dates) {
   
   async.auto({
     config: function(cb) {
-      $.getJSON("compare-config.json", function(config) {
+      $.getJSON(baseurl+"/compare-config.json", function(config) {
         cb(null, config);
       });    
     },
     
     vpc_info: function(cb) {
-      $.getJSON("vpc/info", function(vpcinfo) {
+      $.getJSON(baseurl+"/vpc/info", function(vpcinfo) {
         vpc_info = vpcinfo;
         cb(null, vpcinfo);
       });
@@ -83,13 +83,13 @@ function populateChangelog(dates) {
         async.auto({
         
           snapshot: function(cb) {
-            $.getJSON("snapshot/"+end, function(snap) {
+            $.getJSON(baseurl+"/snapshot/"+end, function(snap) {
               cb(null, snap);
             })
           },
           
           diff: function(cb) {
-            $.getJSON("diff/"+start+"/"+end, function(diff) {
+            $.getJSON(baseurl+"/diff/"+start+"/"+end, function(diff) {
               cb(null, diff);
             })
           },
