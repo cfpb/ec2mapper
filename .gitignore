@@ -1,0 +1,5 @@
+server-settings.json
+*.sublime-project
+*.sublime-workspace
+*.log
+
