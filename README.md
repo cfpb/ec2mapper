@@ -41,13 +41,13 @@ Also note that EC2mapper does not provide any kind of authentication, if you req
 ### Screenshots
 
 Main page of EC2mapper showing VPCs and security groups (left side) and all instances belonging to currently selected VPC (main area).  Green, red, and yellow highlighting denote security groups and instances that have been added, removed or changed respectively within a user-specified date range.
-<br><img src="ec2mapper/raw/master/screenshots/ss1.png"><br>
+<br>![Main Page](screenshots/ss1.png)<br>
 
 Dropdown calendar opened to show date range selection.
-<br><img src="ec2mapper/raw/master/screenshots/ss2.png"><br>
+<br>![Calendar](screenshots/ss2.png)<br>
 
 Clicking on an instance will display a popup with details.
-<br><img src="ec2mapper/raw/master/screenshots/ss3.png"><br>
+<br>![Details](screenshots/ss3.png)<br>
 
 Popup for a changed instance showing a security group in green to which it has been assigned.
-<br><img src="ec2mapper/raw/master/screenshots/ss4.png"><br>
+<br>![Popup Security Group](screenshots/ss4.png)<br>
